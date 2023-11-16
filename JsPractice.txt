@@ -1,0 +1,236 @@
+// let b = 15;
+// console.log(b);
+// console.log(func());
+
+// const x = 10;
+// const func = () =>{
+//   let x = 50;
+//   console.log("Inside Function...");
+//   console.log(x);
+// }
+// console.log(x);
+// func();
+
+
+
+// console.log("abc");
+// let c = 2;
+// let c = 5;     //not even single line run
+
+
+  // ================== CURRING ================
+
+//   function curry(f){
+//    return function(a){
+//      return function(b){
+//         return f(a,b)
+//       }
+//     }
+//   }
+
+//   function sub(a,b){
+//     return (a-b);  
+//   }
+
+//   let newCurry = curry(sub);
+//  newCurry(100)(10);
+
+
+
+// ============= CallBack Function ====================
+// number = [1, 2, 3, 4, 5, 6];
+
+// function isOdd(number){
+//   return number%2;
+// }
+
+// let ans = number.filter(isOdd);
+// console.log(ans);
+
+// -------- 0r --------
+
+// setInterval( () => {
+//   console.log("setInterval fn...");
+// },2000);
+
+// // -------- 0r --------
+
+// setTimeout( () => {
+//   console.log("setTimeout fn...");
+// },2000);
+
+
+
+//============= YIELD Keyword ==============
+
+// function* func(i){
+//   while(i<3){
+//     yield i++;
+//   }
+// }
+
+// let yf = func(0);
+// console.log(yf.next().value);
+// console.log(yf.next().value);
+// console.log(yf.next().value);
+// console.log(yf.value);
+
+
+
+// *************************************
+// var a;
+// console.log(a);
+// const b;
+// console.log(b);
+
+
+// ********************** Higher Order Function *****************
+// function func(fn){
+//   fn();
+// }
+// func(function(){ console.log("hello")});  //Function as Argument
+
+
+
+// function func2(){
+//   return function(){
+//     console.log("Hello brother!");
+//   }
+// }
+// var x = func2();            //Return as Function
+// x();
+
+
+// **************** IIFE ****************
+// (function f(){
+//   console.log("IIfe fn");
+// })();
+
+
+
+// ************* CallBack Function *************
+
+// function myCalc(some){
+//   console.log(some);
+// }
+
+// function func(num1, num2, callback){
+//   let sum = num1+num2;
+//   callback(sum);
+// }
+
+// func(5,5,myCalc);
+
+
+
+// ************* Currying *******************
+
+// function sum(a,b){
+//   return a+b;
+// }
+
+// function func(fn){
+//   return function(a){
+//     return function(b){
+//       return fn(a,b);
+//     }
+//   }
+// }
+
+// var currySum = func(sum);
+// currySum(5)(10);
+
+
+
+// ******************* PROMISE **********************
+// var flag = true;
+// var promise = new Promise(function(resolve,reject){
+//   if(flag){
+//     resolve("In resolve");
+//   }else{
+//     reject("In reject");
+//   }
+// });
+
+// promise
+// .then(function(res){
+//   console.log("Resolved..");
+// })
+// .catch(function(err){
+//   console.log("Rejected...!!")
+// })
+
+
+
+
+// ********************* YIELD keyword ***********************
+// function* show(i){
+//   while(i<3){
+//     yield i++;
+//   }
+// }
+
+// const fn = show(0);
+// console.log(fn.next().value);
+// console.log(fn.next().value);
+// console.log(fn.next().value);
+
+
+// *************** Async *******************
+
+// const getData = async() => {
+//   const data = "Hello !";
+//   return data;
+// }
+// getData().then(data => (console.log(data)));
+
+
+// const getData = async() => {
+//   var data = await "Hello !";
+//   console.log(data);
+// }
+// console.log(1);
+// getData();
+// console.log(2);
+
+
+//another example 
+
+// function resolveAfter2Seconds() {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       resolve('resolved');
+//     }, 2000);
+//   });
+// }
+
+// async function asyncCall() {
+//   console.log('calling');
+//   const result = await resolveAfter2Seconds();
+//   console.log(result);
+//   // Expected output: "resolved"
+// }
+
+// asyncCall();
+
+
+//Convert to binary 
+
+const arr = [2,3,1,5,4,6];
+
+const binary = (x) => {
+  return x.toString(2);
+}
+
+const output = arr.map(binary);
+console.log(output);
+
+// 1 = 001
+// 2 = 010
+// 3 = 011
+// 4 = 100
+// 5 = 101
+// 6 = 110
+
+
+

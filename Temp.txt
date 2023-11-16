@@ -1,0 +1,22 @@
+function Employee(name, age, id){
+  this.name = name;
+  this.age = age;
+  this.id = id;
+}
+
+Employee.prototype.detail = function(){
+  return `This is ${this.name}`;
+}
+
+var emp1 = new Employee("Dinesh",23,100);
+// console.log(emp1.detail());
+
+function Programmer(name, age, id, language){
+  Employee.call(this,name,age,id,language);
+  this.language = language;
+}
+
+Programmer.prototype = Object.create(Employee.prototype);
+
+var ajay = new Programmer("Ajay",20, 500,"JavaScript");
+console.log(ajay.detail());

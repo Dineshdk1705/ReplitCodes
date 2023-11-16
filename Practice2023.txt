@@ -1,0 +1,323 @@
+// remove duplicate character from array
+
+// const inputArray = ['a', 'b', 'a', 'c', 'b', 'd', 'e', 'c'];
+
+// const removeDuplicates = arr => {
+//   let result = [];
+//   let seen = {};
+
+//   for(let char of arr){
+//     if(!seen[char]){
+//       result.push(char);
+//       seen[char]=true;
+//     }
+//   }
+//   return result;
+// }
+
+// const res = removeDuplicates(inputArray);
+// console.log(res);
+
+
+
+//print only repeated char
+
+// const inputArray = ['a', 'b', 'a', 'c', 'b', 'd', 'e', 'c'];
+
+// const printDuplicates = (arr) => {
+//   let result = [];
+//   let seen = {};
+
+//   for(let char of arr){
+//     if(!seen[char]){
+//       seen[char]=true;
+//     }else{
+//       result.push(char);
+//     }
+//   }
+//   return result;
+// }
+
+// const res = printDuplicates(inputArray);
+// console.log(res);
+
+
+
+// reverse each word in the sentence
+
+// const inputSentence = "Hello world! This is a test.";
+
+// const reverseWords = (sentence) => {
+//   const words = sentence.split(' ');
+//   const reverse = words.map((word)=> {
+//     return word.split('').reverse().join('');
+//   })
+
+//   return reverse.join(' '); 
+// }
+
+// const res = reverseWords(inputSentence);
+// console.log(res);
+
+
+
+// reverse each word in the sentence without using inbuild methods
+
+// const inputSentence = "Hello world! This is a test.";
+
+// const reverseString = (str) => {
+//   let result = '';
+
+//   for(let i=str.length-1; i >= 0; i--){
+//     result += str[i];
+//   }
+
+//   return result;
+// }
+
+// const res = reverseString(inputSentence);
+// console.log(res);
+
+
+
+
+
+// Given two strings, return true if they are anagrams of one another
+
+// const checkAnagram = (first, second) => {
+//   let a = first.toLowerCase();
+//   let b = second.toLowerCase();
+
+//   a = a.split("").sort().join("");
+//   b = b.split("").sort().join("");
+
+//   return a === b;
+// }
+
+// const res = checkAnagram("Mary", "Army");
+// console.log(res);
+
+
+
+// Callback 
+
+// const data = [1,2,3,4,5];
+
+// const modifyArr=((arr,callback)=>{
+//   console.log(arr);
+//   arr.push(100);
+//   callback();
+// })
+
+// modifyArr(data, function(){
+//   console.log('callback fuc', data);
+// })
+
+
+
+
+
+
+
+// Polyfill for bind() method
+
+// // 1 - with bind()
+// const obj1 = {
+//   name: "Dinesh",
+//   hobby: "Coding"
+// }
+
+// const printName = function(place,state){
+//   console.log(this.name + " , " + this.hobby + " , " + place , " , " + state);
+// }
+
+// // const printName2 = printName.bind(obj1,"Bilaspur");
+// // printName2("Chhattisgarh");
+
+
+
+// //2- Pollyfill with bind()
+// Function.prototype.myBind = function(...args){
+//   const obj = this;
+//   const params = args.slice(1);
+//   return function(...args2){
+//     obj.apply(args[0],[...params, ...args2]);
+//   }
+// }
+
+// const printName3 = printName.myBind(obj1,"Bilaspur");
+// printName3("Chhattisgarh");
+
+
+
+
+
+
+
+// sum(1)(2)(3)(4)(5)...
+
+// let sum = function(a){
+//   return function (b){
+//     if(b){
+//       return sum(a+b);
+//     }else{
+//       return a;
+//     }
+//   }
+// }
+
+
+// short syntac ES6
+// const sum = a => b => typeof b === 'undefined' ? a : sum(a+b);
+
+// console.log(sum(10)(2)(3)(4)());
+
+
+
+
+
+
+
+// Curryning
+
+// //normal function
+// const multiply = function(a,b){
+//   return a*b;
+// }
+
+// function using currying
+// const curryMultiply = function(a){
+//   return function(b){
+//     return a*b;
+//   }
+// }
+
+// const multiplyThree = curryMultiply(5);
+// console.log(multiplyThree(3));
+
+
+// const multiplyTen = curryMultiply(5);
+// console.log(multiplyTen(10));
+
+
+
+
+
+//map,filter,reduce
+
+// const arr = [1, 2, 3, 4, 5];
+
+// map
+// const sum = arr.map((val) => {
+//   return val + 10;
+// })
+
+// const name = [
+//   {firstname: "Dinesh", lastname: "Kumar", age: 24},
+//   {firstname: "Harish", lastname: "Satnami", age: 23},
+//   {firstname: "Brij", lastname: "Kaushik", age: 22},
+//   {firstname: "Sattu", lastname: "Sahu", age: 24},
+//   {firstname: "Divyank", lastname: "Singh", age: 20},
+//   {firstname: "DP", lastname: "Kr", age: 26},
+// ]
+
+// const fullName = name.map(item => item.firstname +" "+ item.lastname);
+
+// const countAge = name.reduce((obj,curr)=> {
+//   if(obj[curr.age]){
+//     ++obj[curr.age];
+//   }else{
+//     obj[curr.age] = 1;
+//   }
+//   return obj;
+// },{});
+
+// const output = name.filter(item => item.age > 23).map(item => item.firstname);
+
+// const outputUsingReduce = name.reduce((arr,curr) => {
+//   if(curr.age > 23){
+//     arr.push(curr.firstname);
+//   }
+//   return arr;
+// },[])
+
+// console.log(outputUsingReduce);
+
+// filter
+// const filterData = arr.filter((val) => val > 3);
+
+
+
+// reduce
+// const reducedSum = arr.reduce((acc,curr)=> {
+//   acc = acc + curr;
+//   return acc;
+// },0);
+
+// const reducedMax = arr.reduce((max,curr)=> {
+//     if(curr > max){
+//       max = curr;
+//     }
+//   return max;
+// },0);
+
+// console.log(reducedMax);
+
+
+
+
+
+
+
+// Polyfill for map, filter, reduce
+
+const arr = [1, 2, 3, 4, 5];
+
+// map polyfill
+// arr.map((item,i,arr) => return item*2);
+
+// Array.prototype.myMap = function(callback){
+//   let newArr = [];
+//   for(let i=0; i<this.length; i++){
+//     newArr.push(callback(this[i],i,this));
+//   }
+//   return newArr;
+// }
+
+// const mapOutput = arr.myMap((item) => item * 2);
+// console.log(mapOutput);
+
+
+
+// filter polyfill
+// arr.filter((item,i,arr) => return item > 3);
+
+// Array.prototype.myFilter = function(cb){
+//   let newArr = [];
+//   for(let i=0; i<this.length; i++){
+//     if(cb(this[i],i,this)){
+//       newArr.push(this[i]);
+//     }
+//   }
+//   return newArr;
+// }
+
+// const filterOutput = arr.myFilter((item) => item > 3);
+// console.log(filterOutput);
+
+
+
+// reduce polyfill
+// Array.prototype.myReduce = function(cb,initialValue){
+//   let accumulator = initialValue;
+//   for(let i=0; i<this.length; i++){
+//     accumulator = accumulator ? cb(accumulator, this[i], i, this) : this[i];
+//   }
+//   return accumulator;
+// }
+
+// const reduceOutput = arr.myReduce((acc,curr) => {
+//   acc += curr
+//   return acc;
+// });
+// console.log(reduceOutput);

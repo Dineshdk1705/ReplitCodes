@@ -1,0 +1,312 @@
+// ******************* CLOSURE *************************
+
+// function f1(){
+//   let a = 3;
+//   function f2(){
+//     a=2;
+//     console.log(a);
+//   }
+//   console.log('a1',a);
+//   return f2;
+// }
+// let v = f1();
+// v();
+
+
+
+// ********************* HOISTING ***********************
+
+// console.log(b);
+// console.log(a);
+// f1();
+
+// var a = 10;
+// var b = 20;
+// console.log(b);
+// console.log(a);
+
+// function f1(){
+//   // console.log(c);
+//   let a;
+//   const c = 50;
+// // c = 50;
+//   console.log(c);
+//   // a = 30;
+//   console.log(a);
+//   console.log("function Hoisting..")
+// }
+
+
+
+
+// ******************** PROMISE ****************************
+
+// let flag = true;
+// const promise = new Promise(function(resolve,reject){
+//   if(flag){
+//     resolve("resolving..");
+//   }else{
+//     reject("in Reject");
+//   }
+// })
+
+// promise
+// .then(function(res) {
+//   console.log("Successfully Resoleved !");
+// })
+// .catch(function(err) {
+//   console.log("Failed...")
+// })
+
+
+
+
+// ******************** CURRING *************************
+
+// function sum(a,b){
+//   return function(a){
+//     return function(b){
+//       return a+b;
+//     }
+//   }
+// }
+
+// let curry = sum();
+// console.log(curry(10)(20));
+
+// -------- Another example -------
+
+// function sum(a,b){
+//   return a+b;
+// }
+
+// function func(f1){
+//   return function(a){
+//     return function(b){
+//       return f1(a,b);
+//     }
+//   }
+// }
+
+// let currySum = func(sum);
+// console.log(currySum(20)(50));
+
+
+
+
+//********************* CALLBACK FUNCTION ************************
+
+// function sumCalculator(a, b, callback){
+//   let sum = a + b;
+//   return callback(sum);
+// }
+
+// function display(some){
+//   console.log('sum is ==> ', some);
+// }
+
+// sumCalculator(10, 20, display);
+
+
+
+
+//****************** CALL, APPLY, BIND *************************
+
+// const dinesh = {
+//   name: "Dinesh",
+//   hometown: "Bokaro"
+// }
+
+// const harish = {
+//   name: "Harish",
+//   hometown: "Bilaspur"
+// }
+
+// function getDetail(language, hobby){
+//   console.log(this.name+ " from "+ this.hometown + " loves " + language+ " & hobby is " + hobby);
+// }
+
+// // CALL
+// console.log("call()");
+// getDetail.call(harish, "Java", "Cricket.");
+// getDetail.call(dinesh, "JavaScript", "Dancing.");
+
+// // APPLY
+// console.log("apply()");
+// getDetail.apply(dinesh, ["Python", "Cooking."]);
+
+// // BIND
+// console.log("bind()");
+// const callBind = getDetail.bind(harish, "C++", "Travelling.");
+// callBind();
+
+
+
+
+
+// *************** MAP, FILTER, REDUCE ***************************
+
+// const arr = [10, 20, 30, 40, 50];
+// const arrr = [1, 2, 3, 4, 5];
+
+// let mapResult = arr.map(el => el+5);
+// console.log(mapResult);
+
+// let filterResult = arr.filter(el => el>=20 && el<40);
+// console.log(filterResult);
+
+// function func(total, el){
+//   total += el;
+//   return total;
+// }
+
+// let reduceResult = arr.reduce(func);
+// console.log(reduceResult);
+
+
+
+
+// ****************** FIND, INCLUDES, INDEXOF ******************
+
+// const arr = [10, 44, 20, 17, 40, 50];
+
+// console.log(arr.find(el => el>30));  
+// //find() : return 1st element who matches the expression
+// console.log(arr.includes(50));
+// //includes() : return boolean, it checks whether element present or not 
+// console.log(arr.indexOf(40));
+// //indexOf() : return index number of the element
+
+
+
+// ******************* PROTOTYPAL INHERITANCE ************************
+
+//Inherit by the use of prototype from one object to another object.
+// function employee(name,age,salary){
+//   this.name = name;
+//   this.age = age;
+//   this.salary = salary;
+// }
+
+// // add metod by prototype
+// employee.prototype.slogan = function(){
+//   return "This is slogan of "+this.name;
+// }
+
+// // create object
+// let objEmployee = new employee("Dinesh",22,5000);
+// console.log(objEmployee.slogan());
+
+// // craete another function
+// function programmer(name,age,salary,language){
+//   employee.call(this,name,age,salary,language);
+//   this.language = language;
+// }
+
+// // inherit prototype of others object prototype
+// programmer.prototype = Object.create(employee.prototype);
+
+// let objProgrammer = new programmer("Harish",23,10000,"Java");
+// console.log(objProgrammer.slogan());
+
+
+
+
+
+// ***************** CLASS INHERITANCE **********************
+
+// class Employee{
+//   constructor(givenName, givenAge, givenPlace){
+//     this.name = givenName;
+//     this.age = givenAge;
+//     this.place = givenPlace;
+//   }
+
+//   slogan(){
+//     return `${this.name} is the best`;
+//   }
+
+//   static add(a,b){
+//     return a+b;
+//   }
+// }
+
+// //inherit Employee Class
+// class Programmer extends Employee{
+//   constructor(givenName, givenAge, givenPlace, language, github){
+//     super(givenName, givenAge, givenPlace);
+//     this.language = language;
+//     this.github = github;
+//   }
+
+//   getDetail(){
+//     return `${this.name} is from ${this.place} loves ${this.language}`;
+//   }
+
+//   static multiply(a,b){
+//     return a*b;
+//   }
+// }
+
+// // harish = new Employee("Harish", 23, "Bilaspur");
+// // console.log(harish.slogan());
+// // console.log(Employee.add(10, 20));
+
+// dinesh = new Programmer("Dinesh", 22, "Bokaro", "JavaScript", "dinesh1705");
+// console.log(dinesh.getDetail());
+// console.log(dinesh);
+
+
+
+
+
+//************ YIELD KEYWORD *****************
+// function* func(i){
+//   while(i<3){
+//     yield i++;
+//   }
+// }
+
+// const v = func(0);
+// console.log(v.next().value);
+// console.log(v.next().value);
+// console.log(v.next().value);
+
+
+
+
+// ******************* REGULAR FN & ARROW FN *******************
+// let add = function(a,b){
+//   return a+b;
+// }
+
+
+// let add = (a,b) => a+b;
+// add(5,6);
+
+
+
+// this KEYWORD
+// let user = {
+//   name: "Dinesh",
+//   gfg1: () => {
+//     console.log("arrow : " + this.name);  // undefined
+//   },
+//   gfg2(){
+//     console.log("regular : "+ this.name);  // Dinesh
+//   }
+// }
+
+// user.gfg1();
+// user.gfg2();
+
+
+
+// let greet =" Good Morning";
+// let t = 5;
+
+// if(t > 3){
+//   let greet = "Good Night";
+//   console.log(greet);
+// }
+// console.log(greet);

@@ -1,0 +1,256 @@
+// Palondrom
+// const isPalindrom = x => {
+//   return x<0 ? false : x === +x.toString().split("").reverse().join("");
+// }
+
+// const res = isPalindrom(121);
+// console.log(res);
+
+
+
+
+// Fibbonaci Series
+// F(0) = 0, F(1) = 1
+// F(n) = F(n-1) + F(N-2),  for n>1;
+// Fibbonaci Series = 0,1,1,2,3,5,8,13,....
+//   input = 3, output = 2
+
+// const fib = n => {
+//   const arr = [0,1];
+
+//   for(let i=2; i<=n; i++){
+//     arr.push(arr[i-1]+arr[i-2]);
+//   }
+//    return arr[n];
+// }
+
+// const res = fib(3);
+// console.log(res);
+
+
+// using Recurssion
+// const fib = function(n) {
+//   if(n <= 1) return n;
+
+//   return n<=1 ? n : fib(n-1)+fib(n-2);
+// }
+
+// console.log(fib(3));
+
+
+
+
+//find word is valid Anagram ("anagram" === "nagaram")
+
+// First Approach
+// const isAnagram = function(s1,s2){
+//   s1 = s1.split("").sort().join("");
+//   s2 = s2.split("").sort().join("");
+
+//   return s1 === s2;
+// }
+
+// Second Approach
+// const isAnagram = function(s1,s2){
+//   if(s1.length !== s2.length) return false;
+
+//   let obj1 = {};
+//   let obj2 = {};
+
+//   for(let i=0; i<s1.length; i++){
+//     obj1[s1[i]] = (obj1[s1[i]] || 0) + 1;
+//     obj2[s2[i]] = (obj2[s2[i]] || 0) + 1;
+//   }
+
+//   for(let key in obj1){
+//     if(obj1[key] !== obj2[key]) return false;
+//   }
+
+//   return true;
+// }
+
+// console.log(isAnagram("anagram","nagaram"));
+
+
+
+
+// const arr = [1, 4, 5, 2, 8];
+
+//Brute force approach
+// const checkSum = function(arr,k){
+//   for(let i=0; i<arr.length; i++){
+//     for(let j=i+1; j<arr.length; j++){
+//       if(arr[i]+arr[j] === k){
+//         return [i,j];
+//       }
+//     }
+//   }
+// }
+
+// Optimize approach
+// const checkSum = function(arr,k){
+//   let obj = {};
+//   for(let i=0; i<arr.length; i++){
+//     const n = arr[i];
+//     if(obj[k-n] >= 0){
+//       return [obj[k-n],i];
+//     }else{
+//       obj[n] = i;
+//     }
+//   }
+// }
+
+// console.log (checkSum(arr,6));
+
+
+
+
+const prices = [0,3,8,6,8,6,6,8,2,0,2,7];
+
+const maxProfit = function(price){
+  let minBuyPrice = price[0] || 10000000000000;
+  let profit = 0;
+
+  for(let i=1; i<price.length; i++){
+    if(price[i] < minBuyPrice){
+      minBuyPrice = price[i];
+    }
+    profit = Math.max(profit, price[i]-minBuyPrice);
+  }
+  return profit;
+}
+
+console.log(maxProfit(prices))
+
+
+
+
+// ================================= ARRAY ===================================
+
+// METHODS: 
+// map(), 
+// filter, 
+// reduce, 
+// some(same as filter it return true if a single element satisfied the condition),
+// every(same as filter it return true if all elements satisfied the condition),
+// find (it return first element who satisfy the condition), 
+// Spread operator, 
+// Rest operator, 
+// concat (it combines two or more arrays and return new array),
+// slice (return a new array with a selected sections as index it takes two arguments slice(firstIndex, secondIndex)),
+// splice (in this we can remove numbers of elements and also we can insert elements in it and it doesn't returns new array. it takes 3 arguments splice(firstIndex, noOfElementYouWantToRemove, NewInswertElement)),
+// fill (it replace the elements in the same array. it takes 2 arguments fill(newElement, startIndex)),
+// findIndex (it return first index when the predicate is true, otherwise it return -1),
+// flat (if we have multiple arrays inside a single array then flat is used to all array brackets and return flattened array flat(no.of depth(nested array))),
+// reverse(),
+// sort((a,b) => a-b)
+// from (its creates an array from an iterable object)
+
+// ===============================================================================
+
+
+
+// Return the second largest number
+// const arr = [10,23,99,55,88,33];
+
+// const secondLargestNumber = function(arr){
+//   let largest = Number.NEGATIVE_INFINITY;
+//   let secondLargest = Number.NEGATIVE_INFINITY;
+//   for(let i=0;i<arr.length; i++){
+//     if(arr[i] > largest){
+//       secondLargest = largest;
+//       largest = arr[i];
+//     }else if(arr[i] !== largest && arr[i] > secondLargest){
+//       secondLargest = arr[i];
+//     }
+//   }
+//   return secondLargest;
+// }
+
+// console.log(secondLargestNumber(arr));
+
+
+
+
+// Rotate Array by k
+// const arr = [1,2,3,4,5,6,7,8];
+
+// const rotateArray = function(arr,k){
+//   let size = arr.length;
+//   if(k > size){
+//     k = k % size; 
+//   }
+//   let rotated = arr.splice(size - k, size);
+//   arr.unshift(...rotated);
+  
+//   return arr;
+// }
+
+// console.log(rotateArray(arr,7));
+
+// optimized approach
+// const rotateArray = function(arr,k){
+//   const size = arr.length;
+//   if(k > size){
+//     k = k % size;
+//   }
+
+//   reverseArray(arr,0,arr.length-1);
+//   reverseArray(arr,0,k-1);
+//   reverseArray(arr,k,arr.length-1);
+
+//   return arr;
+// }
+
+// const reverseArray =  function(arr,start,end){
+//   let temp = 0;
+//   while(start < end){
+//     temp = arr[start];
+//     arr[start] = arr[end];
+//     arr[end] = temp;
+//     start++; end--;  
+//   }
+// }
+
+// console.log(rotateArray(arr,4));
+
+
+
+
+
+// remove duplicates and return unique element length
+const arr = [0,1,1,2,2,2,3,4,4,5,6,7,7,7,8];
+
+// brute force
+// const removeDuplicates = function(nums){
+//   for(let i=0;i<nums.length-1; i++){
+//     if(nums[i+1] === nums[i]){
+//       nums.splice(i+1,1);
+//       i--; 
+//     }
+//   }
+//   return nums;
+// }
+
+// optimized approach
+// const removeDuplicates = function(nums){
+//   let set = new Set();
+//   for(let i=0;i<nums.length; i++){
+//     set.add(nums[i]);
+//   }
+//   return set.size;
+// }
+
+// two pointer approach
+// const removeDuplicates = function(nums){
+//   let k = 0;
+//   for(let i=0; i<nums.length-1; i++){
+//     if(nums[i+1] === nums[i]){
+//       k
+//     }
+//   }
+// }
+
+
+
+// console.log(removeDuplicates(arr));
